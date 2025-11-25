@@ -37,15 +37,6 @@ def create_choropleth(df,indicator):
         range_color=[min_val, max_val]
     )
     fig.update_layout(height=600, margin=dict(l=0, r=0, t=50, b=0))
-    fig.add_annotation(
-    x=0.02,
-    y=0.98,
-    font=dict(size=12, color="white"),
-    xref="paper",
-    yref="paper",
-    text="📊 Point size represents population size",
-    showarrow=False,
-    align="left")
     return fig
 # end of function
 # Set page config
@@ -95,6 +86,7 @@ with tab3:
         file_name="wdi_gapminder_data.csv",
         mime="text/csv"
     )
+
 
 
 
