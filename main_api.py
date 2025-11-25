@@ -16,7 +16,6 @@ st.title("World Bank GDP x life expectancy Timeseries")
 # Optional: Add some statistics
 st.subheader("Quick Statistics")
 col1, col2, col3, col4 = st.columns(4)
-row1, row2 = st.rows(2)
 
 with col1:
     st.metric("Total Countries", df['country'].nunique())
@@ -45,10 +44,9 @@ if st.checkbox("Show data"):
 # Add download button at the top
 csv = df.to_csv(index=False)
 #
-with row2:
-    st.download_button(
-        label="📥 Download Dataset as CSV",
-        data=csv,
-        file_name="wdi_gapminder_data.csv",
-        mime="text/csv"
-    )
+st.download_button(
+    label="📥 Download Dataset as CSV",
+    data=csv,
+    file_name="wdi_gapminder_data.csv",
+    mime="text/csv"
+)
