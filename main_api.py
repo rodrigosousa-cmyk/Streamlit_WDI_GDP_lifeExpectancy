@@ -40,7 +40,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 # Optional: Show filtered data
 if st.checkbox("Show data"):
-
+    st.dataframe(df)
 # Add download button at the top
 csv = df.to_csv(index=False)
 st.download_button(
@@ -49,4 +49,4 @@ st.download_button(
     file_name="gapminder_data.csv",
     mime="text/csv"
 )
-    st.dataframe(df)
+
