@@ -43,8 +43,7 @@ def create_choropleth(df,indicator):
 # end of function
 #
 # Load dataset
-# Cache data loading
-#@st.cache_data(ttl=3600)
+@st.cache_data(ttl=3600)
 df = px.data.gapminder()
 
 # Title
@@ -96,4 +95,3 @@ with tab3:
         file_name="wdi_gapminder_data.csv",
         mime="text/csv"
     )
-
