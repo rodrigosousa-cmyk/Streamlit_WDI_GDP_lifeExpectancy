@@ -42,11 +42,6 @@ def create_choropleth(df,indicator):
     return fig
 # end of function
 #
-# Set page configuration
-# Title
-st.title("World Bank GDP x life expectancy Timeseries")
-
-
 # Load dataset
 # Cache data loading
 #@st.cache_data(ttl=3600)
@@ -101,3 +96,4 @@ with tab3:
         file_name="wdi_gapminder_data.csv",
         mime="text/csv"
     )
+
