@@ -48,30 +48,9 @@ st.title("World Bank GDP x life expectancy Timeseries")
 # Load dataset
 #@st.cache_data()
 df = px.data.gapminder()
-
-# Display plots in tabs
-tab1, tab2 ,tab3 = st.tabs(["🌍 Annual GDP per capita", "🌍 Life Expectancy by year", "📊 GDP x Life Expectancy TimeSeries"]) 
-
-with tab1:
-    st.plotly_chart(create_choropleth(df,"gdpPercap"), use_container_width=True)
-    
-with tab2:
-    st.plotly_chart(create_choropleth(df,"lifeExp"), use_container_width=True)
-    
-with tab3:
-    # Create the plot
-    fig = px.scatter(df, x="gdpPercap", y="lifeExp", animation_frame="year",
-                     animation_group="country", size="pop", color="continent",
-                     hover_name="country", log_x=True, size_max=60,
-                     range_x=[100, 100000], range_y=[25, 90])
-
-    # Display the plot
-    st.plotly_chart(fig, use_container_width=True)
-
     # Optional: Add some statistics
 st.subheader("Quick Statistics")
 col1, col2, col3, col4 = st.columns(4)
-
 
 with col1:
     st.metric("Total Countries", df['country'].nunique())
@@ -97,4 +76,21 @@ with col4:
         mime="text/csv"
     )
 
+# Display plots in tabs
+tab1, tab2 ,tab3 = st.tabs(["🌍 Annual GDP per capita", "🌍 Life Expectancy by year", "📊 GDP x Life Expectancy TimeSeries"]) 
 
+with tab1:
+    st.plotly_chart(create_choropleth(df,"gdpPercap"), use_container_width=True)
+    
+with tab2:
+    st.plotly_chart(create_choropleth(df,"lifeExp"), use_container_width=True)
+    
+with tab3:
+    # Create the plot
+    fig = px.scatter(df, x="gdpPercap", y="lifeExp", animation_frame="year",
+                     animation_group="country", size="pop", color="continent",
+                     hover_name="country", log_x=True, size_max=60,
+                     range_x=[100, 100000], range_y=[25, 90])
+
+    # Display the plot
+    st.plotly_chart(fig, use_container_width=True)
