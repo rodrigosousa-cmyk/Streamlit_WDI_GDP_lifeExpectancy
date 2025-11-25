@@ -8,7 +8,7 @@ def fn_scatterplot(df):
         fig = px.scatter(df, x="gdpPercap", y="lifeExp", animation_frame="year",
                          animation_group="country", size="pop", color="continent",
                          hover_name="country", log_x=True, size_max=60,
-                         range_x=[100, 100000], range_y=[25, 90])]
+                         range_x=[100, 100000], range_y=[25, 90])])
         return fig
 # Function Create choropleth map
 def create_choropleth(df,indicator):
@@ -96,4 +96,5 @@ with tab3:
         file_name="wdi_gapminder_data.csv",
         mime="text/csv"
     )
+
 
