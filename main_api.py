@@ -3,6 +3,13 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 import numpy as np
+# Scatterplot Timeseries Function
+def fn_scatterplot(df):
+        fig = px.scatter(df, x="gdpPercap", y="lifeExp", animation_frame="year",
+                         animation_group="country", size="pop", color="continent",
+                         hover_name="country", log_x=True, size_max=60,
+                         range_x=[100, 100000], range_y=[25, 90])]
+        return fig
 # Function Create choropleth map
 def create_choropleth(df,indicator):
     # Use percentiles to exclude outliers
@@ -77,14 +84,8 @@ with tab2:
     st.plotly_chart(create_choropleth(df,"lifeExp"), use_container_width=True)
     
 with tab3:
-    # Create the plot
-    fig = px.scatter(df, x="gdpPercap", y="lifeExp", animation_frame="year",
-                     animation_group="country", size="pop", color="continent",
-                     hover_name="country", log_x=True, size_max=60,
-                     range_x=[100, 100000], range_y=[25, 90])
-
     # Display the plot
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fn_scatterplot(df), use_container_width=True)
     # Optional: Show filtered data
     if st.checkbox("Show data"):
         st.dataframe(df)
@@ -95,3 +96,4 @@ with tab3:
         file_name="wdi_gapminder_data.csv",
         mime="text/csv"
     )
+
