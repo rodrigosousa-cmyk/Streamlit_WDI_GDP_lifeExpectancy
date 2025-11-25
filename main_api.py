@@ -40,7 +40,7 @@ fig.add_annotation(
     font=dict(size=12, color="white"),
     xref="paper",
     yref="paper",
-    text="📊 Point size represents population",
+    text="📊 Point size represents population size",
     showarrow=False,
     align="left"
 )
@@ -53,12 +53,14 @@ if st.checkbox("Show data"):
 # Add download button at the top
 csv = df.to_csv(index=False)
 #
-st.download_button(
-    label="📥 Download Dataset as CSV",
-    data=csv,
-    file_name="wdi_gapminder_data.csv",
-    mime="text/csv"
-)
+with col4:
+    st.download_button(
+        label="📥 Download Dataset as CSV",
+        data=csv,
+        file_name="wdi_gapminder_data.csv",
+        mime="text/csv"
+    )
+
 
 
 
