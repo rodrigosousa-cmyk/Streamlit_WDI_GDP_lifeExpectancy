@@ -1,2 +1,3 @@
-# Streamlit_WDI_GDP_lifeExpectancy
-Streamlit_WDI_GDP_lifeExpectancy
+# Streamlit APIs Portfolio
+
+This is a experimental portfolio for Plotly APIs.
