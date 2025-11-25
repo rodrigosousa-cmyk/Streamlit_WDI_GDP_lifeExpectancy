@@ -49,36 +49,8 @@ st.title("World Bank GDP x life expectancy Timeseries")
 #@st.cache_data()
 df = px.data.gapminder()
 
-# Optional: Add some statistics
-st.subheader("Quick Statistics")
-col1, col2, col3, col4 = st.columns(4)
-
 # Display plots in tabs
 tab1, tab2 ,tab3 = st.tabs(["🌍 Annual GDP per capita", "🌍 Life Expectancy by year", "📊 GDP x Life Expectancy TimeSeries"]) 
-with col1:
-    st.metric("Total Countries", df['country'].nunique())
-
-with col2:
-    st.metric("Years Covered", f"{df['year'].min()} - {df['year'].max()}")
-
-with col3:
-    st.metric("Average GDP", f"{df['gdpPercap'].mean():.2f}")
-
-with col4:
-    st.metric("Average life expectancy", f"{df['lifeExp'].mean():.2f}")
-# Optional: Show filtered data
-if st.checkbox("Show data"):
-    st.dataframe(df)
-# Add download button at the top
-csv = df.to_csv(index=False)
-#
-st.download_button(
-    label="📥 Download Dataset as CSV",
-    data=csv,
-    file_name="wdi_gapminder_data.csv",
-    mime="text/csv"
-)
-
 
 with tab1:
     st.plotly_chart(create_choropleth(df,"gdpPercap"), use_container_width=True)
@@ -95,4 +67,34 @@ with tab3:
 
     # Display the plot
     st.plotly_chart(fig, use_container_width=True)
+
+    # Optional: Add some statistics
+st.subheader("Quick Statistics")
+col1, col2, col3, col4 = st.columns(4)
+
+
+with col1:
+    st.metric("Total Countries", df['country'].nunique())
+    # Optional: Show filtered data
+    if st.checkbox("Show data"):
+        st.dataframe(df)
+    # Add download button at the top
+    csv = df.to_csv(index=False)
+
+with col2:
+    st.metric("Years Covered", f"{df['year'].min()} - {df['year'].max()}")
+
+with col3:
+    st.metric("Average GDP", f"{df['gdpPercap'].mean():.2f}")
+
+with col4:
+    st.metric("Average life expectancy", f"{df['lifeExp'].mean():.2f}")
+    #
+    st.download_button(
+        label="📥 Download Dataset as CSV",
+        data=csv,
+        file_name="wdi_gapminder_data.csv",
+        mime="text/csv"
+    )
+
 
