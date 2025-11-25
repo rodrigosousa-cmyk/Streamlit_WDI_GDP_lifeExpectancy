@@ -42,7 +42,6 @@ fig.add_annotation(
     yref="paper",
     text="📊 Point size represents population",
     showarrow=False,
-    font=dict(size=12, color="black"),
     align="left"
 )
 # Display the plot
@@ -60,6 +59,7 @@ st.download_button(
     file_name="wdi_gapminder_data.csv",
     mime="text/csv"
 )
+
 
 
 
