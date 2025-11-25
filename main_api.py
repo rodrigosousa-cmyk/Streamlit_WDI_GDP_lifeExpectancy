@@ -37,7 +37,7 @@ fig = px.scatter(df, x="gdpPercap", y="lifeExp", animation_frame="year",
 fig.add_annotation(
     x=0.02,
     y=0.98,
-    color="white",
+    font=dict(size=12, color="white"),
     xref="paper",
     yref="paper",
     text="📊 Point size represents population",
@@ -60,5 +60,6 @@ st.download_button(
     file_name="wdi_gapminder_data.csv",
     mime="text/csv"
 )
+
 
 
