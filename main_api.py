@@ -43,10 +43,11 @@ if st.checkbox("Show data"):
     st.dataframe(df)
 # Add download button at the top
 csv = df.to_csv(index=False)
-st.download_button(
-    label="📥 Download Dataset as CSV",
-    data=csv,
-    file_name="gapminder_data.csv",
-    mime="text/csv"
-)
-
+#
+with col4:
+    st.download_button(
+        label="📥 Download Dataset as CSV",
+        data=csv,
+        file_name="gapminder_data.csv",
+        mime="text/csv"
+    )
