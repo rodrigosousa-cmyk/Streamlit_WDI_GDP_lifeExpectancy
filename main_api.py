@@ -34,7 +34,16 @@ fig = px.scatter(df, x="gdpPercap", y="lifeExp", animation_frame="year",
                  animation_group="country", size="pop", color="continent",
                  hover_name="country", log_x=True, size_max=60,
                  range_x=[100, 100000], range_y=[25, 90])
-
+fig.add_annotation(
+    x=0.02,
+    y=0.98,
+    xref="paper",
+    yref="paper",
+    text="📊 Point size represents population",
+    showarrow=False,
+    font=dict(size=12, color="black"),
+    align="left"
+)
 # Display the plot
 st.plotly_chart(fig, use_container_width=True)
 
@@ -50,3 +59,4 @@ st.download_button(
     file_name="wdi_gapminder_data.csv",
     mime="text/csv"
 )
+
