@@ -48,18 +48,16 @@ st.title("World Bank GDP x life expectancy Timeseries")
 # Load dataset
 #@st.cache_data()
 df = px.data.gapminder()
-    # Optional: Add some statistics
+# Add download button at the top
+csv = df.to_csv(index=False)
+
+# Optional: Add some statistics
 st.subheader("Quick Statistics")
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.metric("Total Countries", df['country'].nunique())
-    # Optional: Show filtered data
-    if st.checkbox("Show data"):
-        st.dataframe(df)
-    # Add download button at the top
-    csv = df.to_csv(index=False)
-
+    
 with col2:
     st.metric("Years Covered", f"{df['year'].min()} - {df['year'].max()}")
 
@@ -68,14 +66,7 @@ with col3:
 
 with col4:
     st.metric("Average life expectancy", f"{df['lifeExp'].mean():.2f}")
-    #
-    st.download_button(
-        label="📥 Download Dataset as CSV",
-        data=csv,
-        file_name="wdi_gapminder_data.csv",
-        mime="text/csv"
-    )
-
+    
 # Display plots in tabs
 tab1, tab2 ,tab3 = st.tabs(["🌍 Annual GDP per capita", "🌍 Life Expectancy by year", "📊 GDP x Life Expectancy TimeSeries"]) 
 
@@ -94,3 +85,13 @@ with tab3:
 
     # Display the plot
     st.plotly_chart(fig, use_container_width=True)
+    # Optional: Show filtered data
+    if st.checkbox("Show data"):
+        st.dataframe(df)
+    #
+    st.download_button(
+        label="📥 Download Dataset as CSV",
+        data=csv,
+        file_name="wdi_gapminder_data.csv",
+        mime="text/csv"
+    )
