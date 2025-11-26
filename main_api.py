@@ -96,11 +96,13 @@ with tab3:
         mime="text/csv"
     )
 with tab4:
-        #st.dropdown(select quinquenium)
-    year = df['year'].unique()[11]
-    st.plotly_chart(fn_sunburst(df,year), use_container_width=True)
+    # Use a slider in the sidebar to pick the year for the sunburst (snaps to available years)
+    years = sorted(df['year'].unique().tolist())
+    st.sidebar.header("Sunburst controls")
+    selected_year = st.sidebar.select_slider(
+        "Select year for sunburst",
+        options=years,
+        value=years[-1]
+    )
+    st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
-
-
-
-
