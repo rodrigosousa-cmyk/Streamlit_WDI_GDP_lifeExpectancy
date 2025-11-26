@@ -46,7 +46,7 @@ def fn_sunburst(data,year):
                     color_continuous_scale='RdBu',
                     # title=f'Life Expectancy vs GDP PerCapta ({year})'
                      )
-    fig.update_layout(height=600, margin=dict(l=0, r=0, t=20, b=0))
+    fig.update_layout(height=400, margin=dict(l=0, r=0, t=0, b=0))
     return fig
 # end of functions
 # Set page config
@@ -145,6 +145,7 @@ with tab4:
     )
     st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
+
 
 
 
