@@ -44,7 +44,8 @@ def fn_sunburst(data,year):
                     color='lifeExp',#chunck color
                     hover_data=['year','gdpPercap'],
                     color_continuous_scale='RdBu',
-                    title=f'Life Expectancy vs GDP PerCapta ({year})')
+                    # title=f'Life Expectancy vs GDP PerCapta ({year})'
+                     )
     fig.update_layout(height=600, margin=dict(l=0, r=0, t=20, b=0))
     return fig
 # end of functions
@@ -144,5 +145,6 @@ with tab4:
     )
     st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
+
 
 
