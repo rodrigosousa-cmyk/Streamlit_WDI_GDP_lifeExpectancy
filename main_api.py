@@ -96,20 +96,20 @@ df['gdp_perc'] = pd.qcut(df['gdpPercap'],4,labels=['GDP_Q1','GDP_Q2','GDP_Q3','G
 csv = df.to_csv(index=False)
 
 # Optional: Add some statistics
-st.subheader("Quick Statistics")
-col1, col2, col3, col4 = st.columns(4)
+# st.subheader("Quick Statistics")
+# col1, col2, col3, col4 = st.columns(4)
 
-with col1:
-    st.metric("Total Countries", df['country'].nunique())
+# with col1:
+#     st.metric("Total Countries", df['country'].nunique())
     
-with col2:
-    st.metric("Years Covered", f"{df['year'].min()} - {df['year'].max()}")
+# with col2:
+#     st.metric("Years Covered", f"{df['year'].min()} - {df['year'].max()}")
 
-with col3:
-    st.metric("Average GDP", f"{df['gdpPercap'].mean():.2f}")
+# with col3:
+#     st.metric("Average GDP", f"{df['gdpPercap'].mean():.2f}")
 
-with col4:
-    st.metric("Average life expectancy", f"{df['lifeExp'].mean():.2f}")
+# with col4:
+#     st.metric("Average life expectancy", f"{df['lifeExp'].mean():.2f}")
     
 # Display plots in tabs
 tab1,tab2,tab3,tab4= st.tabs(["🌍 Life Expectancy by year","🌍 Annual GDP per capita",
@@ -144,4 +144,5 @@ with tab4:
     )
     st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
+
 
