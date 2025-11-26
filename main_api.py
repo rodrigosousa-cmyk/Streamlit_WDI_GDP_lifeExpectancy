@@ -96,13 +96,9 @@ with tab3:
         mime="text/csv"
     )
 with tab4:
-    # Use a slider in the sidebar to pick the year for the sunburst (snaps to available years)
-    years = sorted(df['year'].unique().tolist())
-    st.sidebar.header("Sunburst controls")
-    selected_year = st.sidebar.select_slider(
-        "Select year for sunburst",
-        options=years,
-        value=years[-1]
-    )
+    # Add a dropdown (selectbox) to choose the year for the sunburst graph
+    years = sorted(df['year'].unique())
+    # default to the most recent year
+    selected_year = st.selectbox("Select year for sunburst", years, index=len(years)-1)
     st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
