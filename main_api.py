@@ -73,7 +73,7 @@ with col4:
     st.metric("Average life expectancy", f"{df['lifeExp'].mean():.2f}")
     
 # Display plots in tabs
-tab1,tab2,tab3,tab4= st.tabs(["🌍 Annual GDP per capita", "🌍 Life Expectancy by year",
+tab1,tab2,tab3,tab4= st.tabs(["🌍 Life Expectancy by year","🌍 Annual GDP per capita",
     "📊 GDP x Life Expectancy TimeSeries","📊 GDP x Life Expectancy (quinquennium)"]) 
 
 with tab1:
@@ -100,6 +100,7 @@ with tab4:
     year = df['year'].unique()[11]
     st.plotly_chart(fn_sunburst(df,year), use_container_width=True)
 # END #
+
 
 
 
