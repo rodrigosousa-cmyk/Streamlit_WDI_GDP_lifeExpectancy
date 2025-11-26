@@ -142,10 +142,11 @@ with tab4:
         "Select year",
         options=years,
         value=years[-1],
-        height=500
+        width=500
     )
     st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
+
 
 
 
