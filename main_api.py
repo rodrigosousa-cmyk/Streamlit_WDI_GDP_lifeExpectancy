@@ -21,7 +21,7 @@ def fn_scatterplot(df):
         range_y=[df.lifeExp.min(),df.lifeExp.max()+10],
         # title='Emissions vs Cumulative Emissions Over Time'
     )
-    fig.update_layout(height=600, margin=dict(l=0, r=0, t=20, b=0))
+    fig.update_layout(height=550, margin=dict(l=0, r=0, t=20, b=0))
     return fig
 # Function Create choropleth map
 def create_choropleth(df,indicator):
@@ -145,6 +145,7 @@ with tab4:
     )
     st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
+
 
 
 
