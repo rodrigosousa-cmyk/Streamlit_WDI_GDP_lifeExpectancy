@@ -141,10 +141,12 @@ with tab4:
     selected_year = st.select_slider(
         "Select year",
         options=years,
-        value=years[-1]
+        value=years[-1],
+        width=200
     )
     st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
+
 
 
 
