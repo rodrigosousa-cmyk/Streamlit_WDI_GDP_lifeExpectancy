@@ -96,9 +96,12 @@ with tab3:
         mime="text/csv"
     )
 with tab4:
-    # Add a dropdown (selectbox) to choose the year for the sunburst graph
-    years = sorted(df['year'].unique())
-    # default to the most recent year
-    selected_year = st.selectbox("Select year for sunburst", years, index=len(years)-1)
+    # Place a slider on top of the sunburst (snaps to available years)
+    years = sorted(df['year'].unique().tolist())
+    selected_year = st.select_slider(
+        "Select year",
+        options=years,
+        value=years[-1]
+    )
     st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
