@@ -67,9 +67,9 @@ st.markdown(
     header {visibility: hidden;}
 
     /* Smaller headings globally */
-    h1 {font-size:20px !important; margin: 0.25rem 0 !important; padding: 0 !important;}
+    h1 {font-size:14px !important; margin: 0.25rem 0 !important; padding: 0 !important;}
     h2 {font-size:16px !important; margin: 0.2rem 0 !important; padding: 0 !important;}
-    h3 {font-size:14px !important; margin: 0.15rem 0 !important; padding: 0 !important;}
+    h3 {font-size:20px !important; margin: 0.15rem 0 !important; padding: 0 !important;}
 
     /* Reduce spacing for tabs and controls */
     [role="tablist"] {margin-bottom: 0.25rem !important;}
@@ -144,3 +144,4 @@ with tab4:
     )
     st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
+
