@@ -4,7 +4,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 # Scatterplot Timeseries Function
-def create_scatter(df):
+def fn_scatterplot(df):
     fig = px.scatter(
         df,
         x="gdpPercap",
@@ -101,4 +101,5 @@ with tab4:
     year = df['year'].unique()[11]
     st.plotly_chart(fn_sunburst(df,year), use_container_width=True)
 # END #
+
 
