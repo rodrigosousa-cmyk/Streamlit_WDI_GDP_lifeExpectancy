@@ -38,13 +38,23 @@ def create_choropleth(df,indicator):
     )
     fig.update_layout(height=600, margin=dict(l=0, r=0, t=50, b=0))
     return fig
-# end of function
+# Function Sunburst graph
+def fn_sunburst(data,year):
+    fig = px.sunburst(data[data['year'] == year],
+                    path=['continent', 'gdp_perc','country'],
+                    values='gdpPercap',#chunck size
+                    color='lifeExp',#chunck color
+                    hover_data=['year','gdpPercap'],
+                    color_continuous_scale='RdBu',
+                    title=f'Life Expectancy vs GDP PerCapta ({year})')
+    return fig
+# end of functions
 # Set page config
 st.set_page_config(page_title="World Bank GDP x life expectancy Timeseries", layout="wide")
-# Title
 # Load dataset
 #@st.cache_data()
 df = px.data.gapminder()
+df['gdp_perc'] = pd.qcut(df['gdpPercap'],4,labels=['GDP_Q1','GDP_Q2','GDP_Q3','GDP_Q4'])
 # Add download button at the top
 csv = df.to_csv(index=False)
 
@@ -65,7 +75,8 @@ with col4:
     st.metric("Average life expectancy", f"{df['lifeExp'].mean():.2f}")
     
 # Display plots in tabs
-tab1, tab2 ,tab3 = st.tabs(["🌍 Annual GDP per capita", "🌍 Life Expectancy by year", "📊 GDP x Life Expectancy TimeSeries"]) 
+tab1,tab2,tab3,tab4= st.tabs(["🌍 Annual GDP per capita", "🌍 Life Expectancy by year",
+    "📊 GDP x Life Expectancy TimeSeries","📊 GDP x Life Expectancy (quinquennium)"]) 
 
 with tab1:
     st.plotly_chart(create_choropleth(df,"gdpPercap"), use_container_width=True)
@@ -86,9 +97,7 @@ with tab3:
         file_name="wdi_gapminder_data.csv",
         mime="text/csv"
     )
-
-
-
-
-
-
+with tab4:
+    year = df['year'].unique()[11]
+    st.plotly_chart(fn_sunburst(df,year), use_container_width=True)
+# END #
