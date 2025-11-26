@@ -33,8 +33,7 @@ def create_choropleth(df,indicator):
         animation_frame="year",
         color_continuous_scale='Plasma',
     )
-
-    fig.update_layout(margin = dict(t=0, l=0, r=0, b=0))
+    fig.update_layout(height=600, margin=dict(l=0, r=0, t=50, b=0))
     return fig# Function Sunburst graph
 # Function Sumburst Graph
 def fn_sunburst(data,year):
@@ -45,7 +44,7 @@ def fn_sunburst(data,year):
                     hover_data=['year','gdpPercap'],
                     color_continuous_scale='RdBu',
                     title=f'Life Expectancy vs GDP PerCapta ({year})')
-    fig.update_layout(margin = dict(t=0, l=0, r=0, b=0))
+    fig.update_layout(height=600, margin=dict(l=0, r=0, t=50, b=0))
     return fig
 # end of functions
 # Set page config
@@ -101,5 +100,6 @@ with tab4:
     year = df['year'].unique()[11]
     st.plotly_chart(fn_sunburst(df,year), use_container_width=True)
 # END #
+
 
 
