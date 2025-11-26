@@ -21,6 +21,7 @@ def fn_scatterplot(df):
         range_y=[df.lifeExp.min(),df.lifeExp.max()+10],
         # title='Emissions vs Cumulative Emissions Over Time'
     )
+    fig.update_layout(height=600, margin=dict(l=0, r=0, t=20, b=0))
     return fig
 # Function Create choropleth map
 def create_choropleth(df,indicator):
@@ -33,7 +34,7 @@ def create_choropleth(df,indicator):
         animation_frame="year",
         color_continuous_scale='Plasma',
     )
-    fig.update_layout(height=600, margin=dict(l=0, r=0, t=50, b=0))
+    fig.update_layout(height=600, margin=dict(l=0, r=0, t=20, b=0))
     return fig# Function Sunburst graph
 # Function Sumburst Graph
 def fn_sunburst(data,year):
@@ -44,11 +45,49 @@ def fn_sunburst(data,year):
                     hover_data=['year','gdpPercap'],
                     color_continuous_scale='RdBu',
                     title=f'Life Expectancy vs GDP PerCapta ({year})')
-    fig.update_layout(height=600, margin=dict(l=0, r=0, t=50, b=0))
+    fig.update_layout(height=600, margin=dict(l=0, r=0, t=20, b=0))
     return fig
 # end of functions
 # Set page config
 st.set_page_config(page_title="World Bank GDP x life expectancy Timeseries", layout="wide")
+
+# Inject compact CSS to reduce header, margins and font sizes
+st.markdown(
+    """
+    <style>
+    /* Reduce padding of the main block container */
+    .block-container {
+        padding-top: 0.5rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        padding-bottom: 0.5rem;
+    }
+
+    /* Hide Streamlit's top header to gain space */
+    header {visibility: hidden;}
+
+    /* Smaller headings globally */
+    h1 {font-size:20px !important; margin: 0.25rem 0 !important; padding: 0 !important;}
+    h2 {font-size:16px !important; margin: 0.2rem 0 !important; padding: 0 !important;}
+    h3 {font-size:14px !important; margin: 0.15rem 0 !important; padding: 0 !important;}
+
+    /* Reduce spacing for tabs and controls */
+    [role="tablist"] {margin-bottom: 0.25rem !important;}
+    .stSelectbox, .stSlider, .stRadio {margin-bottom: 0.2rem !important;}
+
+    /* Tighter paragraphs / markdown */
+    .css-1d391kg p, .streamlit-expanderHeader {margin: 0.1rem 0 !important;}
+
+    /* Metric font adjustments (fallback) */
+    .stMetric > div {font-size:14px !important;}
+
+    /* Fallback container padding selector for newer Streamlit versions */
+    [data-testid="stAppViewContainer"] .main .block-container {padding-top: 0.5rem; padding-bottom: 0.5rem;}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Load dataset
 #@st.cache_data()
 df = px.data.gapminder()
