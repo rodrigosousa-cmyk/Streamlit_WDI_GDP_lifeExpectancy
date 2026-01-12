@@ -34,6 +34,8 @@ def create_choropleth(df,indicator):
         animation_frame="year",
         color_continuous_scale='Plasma',
     )
+    fig.update_xaxes(automargin=True)
+    fig.update_yaxes(automargin=True)
     fig.update_layout(height=600, margin=dict(l=0, r=0, t=20, b=0),
                      autosize=True,
     minreducedwidth=100, # Set a minimum width (new in v5.11)
@@ -150,6 +152,7 @@ with tab4:
     )
     st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
+
 
 
 
