@@ -38,7 +38,7 @@ def create_choropleth(df,indicator):
                      autosize=True,
     minreducedwidth=400, # Set a minimum width (new in v5.11)
     minreducedheight=400 # Set a minimum height (new in v5.11
-    ))
+    )
     return fig# Function Sunburst graph
 # Function Sumburst Graph
 def fn_sunburst(data,year):
@@ -150,6 +150,7 @@ with tab4:
     )
     st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
+
 
 
 
