@@ -34,7 +34,7 @@ def create_choropleth(df,indicator):
         animation_frame="year",
         color_continuous_scale='Plasma',
     )
-    fig.update_layout(height=700, margin=dict(l=0, r=0, t=20, b=0))
+    fig.update_layout(height=500, margin=dict(l=0, r=0, t=20, b=0))
     return fig# Function Sunburst graph
 # Function Sumburst Graph
 def fn_sunburst(data,year):
@@ -146,6 +146,7 @@ with tab4:
     )
     st.plotly_chart(fn_sunburst(df, selected_year), use_container_width=True)
 # END #
+
 
 
 
